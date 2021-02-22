@@ -1,4 +1,5 @@
-import psycopg2
+
+"""Simple DB commands"""
 
 
 def create_table(cr_connection):
@@ -39,5 +40,3 @@ def get_last_data(d_connection):
     db_data = cur.fetchall()
     return db_data
 
-# conn = psycopg2.connect("""host=ec2-54-228-174-49.eu-west-1.compute.amazonaws.com dbname=d1avn6tj5dp6nq user=roveelrynqhhhh password=a1ec97e026438ca25e4131e45fc0d853b236b7ecdac114d91c186c657a33aee6""")
-#

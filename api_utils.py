@@ -1,5 +1,3 @@
-from io import StringIO
-
 import matplotlib.pyplot as plt
 import requests
 import json
@@ -11,7 +9,9 @@ matplotlib.use('Agg')
 
 
 def get_data(conn):
-
+    """
+    get_data method insert data to DB if user requests exchange rates after 10 minutes from last insertion
+    """
     data_list = []
     text = ' \n'
 
@@ -35,13 +35,15 @@ def get_data(conn):
     else:
         last_db_data = get_last_data(conn)
         for row in last_db_data:
-            # api_data = curr, str("{:.2f}".format(val))
             data_list.append('  '.join((row[0], row[1])))
             txt = text.join(data_list)
         return txt
 
 
 def api_exchange_result(curr_1, curr_2):
+    """
+    Getting response from API for specific currency pair
+    """
     response = requests.get('https://api.exchangeratesapi.io/latest?symbols={}&base={}'.format(curr_2, curr_1))
     json_data = json.loads(response.content)
     ex_rate = json_data['rates']
@@ -50,6 +52,9 @@ def api_exchange_result(curr_1, curr_2):
 
 
 def api_history_result(message_text, days, curr_1, curr_2):
+    """
+    Request historical data from API and save matplotlib chart
+    """
 
     curr_time = datetime.datetime.now().strftime("%Y_%m_%d_%H_%M_%S")
     today = date.today()
