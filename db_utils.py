@@ -33,7 +33,7 @@ def get_last_data(d_connection):
     cur = d_connection.cursor()
     cur.execute("""
         SELECT *  FROM telegram
-        order by timestamp, curr_name desc
+        order by timestamp, currency_name desc
         limit 33;""")
     db_data = cur.fetchall()
     return db_data
