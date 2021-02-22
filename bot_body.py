@@ -18,7 +18,8 @@ def start_command(message):
 @bot.message_handler(commands=['list'])
 def start_command(message):
 
-    conn = psycopg2.connect("host=localhost dbname=exchange_telegram_bot user=postgres password=123")
+    # conn = psycopg2.connect("host=localhost dbname=exchange_telegram_bot user=postgres password=123")
+    conn = psycopg2.connect("""host=ec2-54-228-174-49.eu-west-1.compute.amazonaws.com dbname=d1avn6tj5dp6nq user=roveelrynqhhhh password=a1ec97e026438ca25e4131e45fc0d853b236b7ecdac114d91c186c657a33aee6""")
 
     data = get_data(conn)
     print(data)
