@@ -19,6 +19,7 @@ def start_command(message):
 def start_command(message):
 
     conn = psycopg2.connect("host=localhost dbname=exchange_telegram_bot user=postgres password=123")
+
     data = get_data(conn)
     print(data)
 
